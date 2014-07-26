@@ -11,8 +11,5 @@ import           Web.Scotty                           (middleware, scotty)
 main :: IO ()
 main = do
   port <- read <$> getEnv "PORT"
-  scotty port $ do
-    middleware $ staticPolicy (noDots >-> addBase "static/images") -- for favicon.ico
-    middleware logStdoutDev
-    get "/" do
-      json "Hello world!"
+  scotty port
+    get "/" json "Hello world!"
