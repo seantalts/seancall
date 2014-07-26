@@ -13,7 +13,7 @@ import           Database.Persist.Sqlite
 import           Database.Persist.TH
 import           Data.Time
 import           Control.Monad.Trans.Resource (ResourceT, runResourceT)
-import Utils
+import           Utils
 
 share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
 User json

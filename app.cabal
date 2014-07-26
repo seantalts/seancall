@@ -8,24 +8,6 @@ cabal-version:       >=1.8
 
 library
   ghc-options:         -Wall -fno-warn-name-shadowing -O2
-  exposed-modules:     Twilio,
-                       Twilio.Account,
-                       Twilio.Accounts,
-                       Twilio.Application,
-                       Twilio.Applications,
-                       Twilio.Call,
-                       Twilio.Calls,
-                       Twilio.ConnectApp,
-                       Twilio.ConnectApps,
-                       Twilio.Message,
-                       Twilio.Messages,
-                       Twilio.OutgoingCallerID,
-                       Twilio.OutgoingCallerIDs,
-                       Twilio.PhoneNumber,
-                       Twilio.PhoneNumbers,
-                       Twilio.Types,
-                       Twilio.UsageRecord
-                       Twilio.UsageRecords
   hs-source-dirs:      Twilio/src
   build-depends:       aeson ==0.7.*,
                        base ==4.6.*,
@@ -44,8 +26,8 @@ library
 
 executable app
   main-is:             Main.hs
+  hs-source-dirs:       src
   other-extensions:    OverloadedStrings
-  hs-source-dirs:      src
   build-depends:       
                      base ==4.6.*
                      , wai
@@ -64,5 +46,5 @@ executable app
                      , aeson
                      , monad-logger
                      , bytestring,
-                     twilio >=0.1.0 && <0.2
+                     twilio
   default-language:    Haskell2010
