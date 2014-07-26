@@ -32,4 +32,4 @@ runDb :: SqlPersistT (ResourceT IO) a -> IO a
 runDb query = runResourceT . withSqliteConn "dev.sqlite3" . runSqlConn $ query
 
 readUsers :: IO [Entity User]
-readUsers = (runDb $ selectList [] [])
+readUsers = runDb $ selectList [] []
