@@ -15,4 +15,4 @@ main = do
     middleware $ staticPolicy (noDots >-> addBase "static/images") -- for favicon.ico
     middleware logStdoutDev
     get "/" do
-      html "Hello world!"
+      json "Hello world!"
