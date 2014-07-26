@@ -45,6 +45,7 @@ library
 executable app
   main-is:             Main.hs
   other-extensions:    OverloadedStrings
+  hs-source-dirs:      src
   build-depends:       
                      base ==4.6.*
                      , wai
