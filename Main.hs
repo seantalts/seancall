@@ -13,11 +13,12 @@ import qualified Data.ByteString.Lazy as B
 main = do
   runDb $ runMigration migrateAll
   scotty 3000 $ do
-    get "/" $ do
+    get "/" $
       json [(0::Int)..10]
     get "/users" $ do
-      json User {userName="Sean", userEmail="sean@sean", userPhone="434.713.0499"}
+      _users <- liftIO readUsers
+      json _users
     post "/users" $ do
       u <- jsonData :: ActionM User
       liftIO $ runDb $ insert u
-      json $ u
+      json u
