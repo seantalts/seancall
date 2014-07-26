@@ -12,8 +12,7 @@ main :: IO ()
 main = do
   port <- read <$> getEnv "PORT"
   scotty port $ do
-         middleware $ staticPolicy (noDots >-> addBase "static/images") -- for favicon.ico
-         middleware logStdoutDev
-         home >> login
-
-
+    middleware $ staticPolicy (noDots >-> addBase "static/images") -- for favicon.ico
+    middleware logStdoutDev
+    get "/" do
+      html "Hello world!"
