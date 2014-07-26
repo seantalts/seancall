@@ -1,14 +1,28 @@
-{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE EmptyDataDecls    #-}
+{-# LANGUAGE FlexibleContexts  #-}
+{-# LANGUAGE GADTs             #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE QuasiQuotes       #-}
+{-# LANGUAGE TemplateHaskell   #-}
+{-# LANGUAGE TypeFamilies      #-}
+{-# LANGUAGE FlexibleInstances #-}
 module Models where
 
-import GHC.Generics
-import Data.Aeson (FromJSON, ToJSON)
+import           Control.Monad.IO.Class  (liftIO)
+import           Database.Persist
+import           Database.Persist.Sqlite
+import           Database.Persist.TH
+import           Data.Time
 
-data User =
-    User { name :: String
-         , email :: String
-         , phone :: String
-         } deriving (Show,Generic)
-
-instance FromJSON User
-instance ToJSON User
+share [mkPersist sqlSettings, mkMigrate "migrateAll"] [persistLowerCase|
+User json
+    name String
+    email String
+    phone String
+    deriving Show
+Schedule json
+    user_id Int
+    period Int
+    start UTCTime
+    deriving Show
+|]
