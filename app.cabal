@@ -8,7 +8,7 @@ cabal-version:       >=1.8
 
 executable app
   main-is:             Main.hs
-  hs-source-dirs:       src
+  hs-source-dirs:      src
   other-extensions:    OverloadedStrings
   build-depends:       
                      base ==4.6.*
@@ -29,4 +29,6 @@ executable app
                      , monad-logger
                      , bytestring
                      , twilio
+                     , parsec
   default-language:    Haskell2010
+  other-modules:       Email

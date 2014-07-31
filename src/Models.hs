@@ -26,6 +26,10 @@ Schedule json
     period Int
     start UTCTime
     deriving Show
+EmailLinks json
+    scheduleId Int
+    email String
+    deriving Show
 |]
 
 runDb :: SqlPersistT (ResourceT IO) a -> IO a
